@@ -10,49 +10,54 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
-  
+
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [allProducts, setAllProducts] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}products.json`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
-        setAllProducts(data);
-        const enhancedData = data.map(product => ({
-          ...product,
-          category: product.category || "clothing",
-          description: product.description || "A high-quality product from our collection.",
-          details: product.details || [
-            "Premium quality materials",
-            "Comfortable fit",
-            "Durable construction"
-          ],
-          sizes: product.sizes || ["XS", "S", "M", "L", "XL"],
-          colors: product.colors || [
-            { name: "Black", value: "#000000" },
-            { name: "White", value: "#ffffff" },
-            { name: "Blue", value: "#0000ff" }
-          ],
-          images: product.images || [product.img],
-          rating: product.rating || 4.0,
-          reviews: product.reviews || 25,
-          inStock: product.inStock !== undefined ? product.inStock : true
-        }));
-        
-        const foundProduct = enhancedData.find(p => p.id === parseInt(id));
-        setProduct(foundProduct);
+        const foundProduct = data.find(p => p.id === parseInt(id));
+
+        if (foundProduct) {
+          setProduct({
+            ...foundProduct,
+            category: foundProduct.category || "clothing",
+            description: foundProduct.description || "A high-quality product from our collection.",
+            details: foundProduct.details || [
+              "Premium quality materials",
+              "Comfortable fit",
+              "Durable construction"
+            ],
+            sizes: foundProduct.sizes || ["XS", "S", "M", "L", "XL"],
+            colors: foundProduct.colors || [
+              { name: "Black", value: "#000000" },
+              { name: "White", value: "#ffffff" },
+              { name: "Blue", value: "#0000ff" }
+            ],
+            images: foundProduct.images && foundProduct.images.length > 0 ? foundProduct.images : [foundProduct.img],
+            rating: foundProduct.rating || 4.0,
+            reviews: foundProduct.reviews || 25,
+            inStock: foundProduct.inStock !== undefined ? foundProduct.inStock : true
+          });
+        }
         setLoading(false);
       })
       .catch((err) => {
         console.error("Error loading products:", err);
         setLoading(false);
+        setErrorMessage("Failed to load product data. Please try again later.");
       });
   }, [id]);
 
@@ -102,18 +107,18 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     if (!selectedSize || !selectedColor) {
       setErrorMessage("⚠️ Please select both size and color before adding to cart");
-      setTimeout(() => setErrorMessage(""), 3000); // auto-hide
+      setTimeout(() => setErrorMessage(""), 3000);
       return;
     }
 
-    const productWithOptions = {
-      ...product,
-      selectedSize,
-      selectedColor,
-      quantity
-    };
+    const selectedImage = product.images[activeImage];
 
-    addToCart(productWithOptions);
+    addToCart(product, selectedSize, selectedColor, quantity, selectedImage);
+
+    // Reset selections after adding to cart
+    setSelectedSize("");
+    setSelectedColor("");
+    setQuantity(1);
   };
 
   const handleToggleFavorite = () => {
@@ -133,7 +138,6 @@ const ProductDetail = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 relative">
-      {/* Notification */}
       {errorMessage && (
         <div className="fixed top-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-2 z-50 animate-fadeIn">
           <span>{errorMessage}</span>
@@ -141,7 +145,6 @@ const ProductDetail = () => {
         </div>
       )}
 
-      {/* Breadcrumb Navigation */}
       <nav className="flex mb-6" aria-label="Breadcrumb">
         <ol className="flex items-center space-x-2">
           <li>
@@ -158,7 +161,7 @@ const ProductDetail = () => {
         </ol>
       </nav>
 
-      <button 
+      <button
         onClick={() => navigate(-1)}
         className="flex items-center mb-6 text-gray-600 hover:text-[#FE7F02]"
       >

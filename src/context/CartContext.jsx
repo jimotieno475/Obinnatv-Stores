@@ -12,28 +12,55 @@ export const CartProvider = ({ children }) => {
     setTimeout(() => setNotification(""), 2000); // auto-hide after 2s
   };
 
-  const addToCart = (product) => {
-    setCart((prevCart) => {
-      const existing = prevCart.find((item) => item.id === product.id);
-      if (existing) {
-        return prevCart.map((item) =>
-          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
-        );
-      }
-      return [...prevCart, { ...product, qty: 1 }];
-    });
-    showNotification("✅ Successfully added to cart");
-  };
+  // ✅ UPDATED: Now takes product, size, color, AND quantity
+ // File: src/context/CartContext.jsx
 
-  const removeFromCart = (id) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+// (imports and other functions remain the same)
+
+const addToCart = (product, selectedSize, selectedColor, qty, selectedImage) => {
+  setCart((prevCart) => {
+    const uniqueKey = `${product.id}-${selectedSize}-${selectedColor}`;
+    const existingItem = prevCart.find((item) => item.uniqueKey === uniqueKey);
+
+    if (existingItem) {
+      return prevCart.map((item) =>
+        item.uniqueKey === uniqueKey
+          ? { ...item, qty: item.qty + qty }
+          : item
+      );
+    }
+
+    const productToAdd = {
+      ...product,
+      price: Number(product.price),
+      selectedSize,
+      selectedColor,
+      qty: qty,
+      uniqueKey,
+      // ✅ Now store the selected image URL in the cart item
+      selectedImage: selectedImage,
+    };
+
+    return [...prevCart, productToAdd];
+  });
+  showNotification("✅ Successfully added to cart");
+};
+
+// (the rest of the component remains the same)
+
+  const removeFromCart = (uniqueKey) => {
+    setCart((prevCart) =>
+      prevCart.filter((item) => item.uniqueKey !== uniqueKey)
+    );
     showNotification("🗑️ Item removed from cart");
   };
 
-  const updateQty = (id, qty) => {
+  const updateQty = (uniqueKey, newQty) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
-        item.id === id ? { ...item, qty: Math.max(1, qty) } : item
+        item.uniqueKey === uniqueKey
+          ? { ...item, qty: Math.max(1, newQty) }
+          : item
       )
     );
     showNotification("🔄 Cart updated");
@@ -58,7 +85,7 @@ export const CartProvider = ({ children }) => {
         totalItems,
         totalPrice,
         notification,
-        setNotification, // expose it if needed
+        setNotification,
       }}
     >
       {children}

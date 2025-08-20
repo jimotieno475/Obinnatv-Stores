@@ -1,10 +1,11 @@
+// File: src/pages/Cart.jsx (or wherever your Cart component is)
 import React from "react";
 import { FiTrash2, FiShoppingCart, FiX } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 const Cart = () => {
-  const { cart, removeFromCart, updateQty, totalPrice, clearCart, notification ,setNotification } = useCart();
+  const { cart, removeFromCart, updateQty, totalPrice, clearCart, notification, setNotification } = useCart();
   const navigate = useNavigate();
 
   return (
@@ -43,84 +44,139 @@ const Cart = () => {
                 className="flex items-center gap-1 text-red-500 hover:text-red-700 transition"
               >
                 <FiTrash2 size={16} />
-                Clear Cart
+                <span className="hidden sm:inline">Clear Cart</span>
               </button>
             </div>
             
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="hidden sm:grid grid-cols-12 bg-gray-100 p-4 font-medium">
-                <div className="col-span-5">Product</div>
+              {/* Desktop Header */}
+              <div className="hidden sm:grid grid-cols-12 bg-gray-100 p-4 font-medium text-sm">
+                <div className="col-span-4">Product</div>
                 <div className="col-span-2 text-center">Price</div>
                 <div className="col-span-2 text-center">Options</div>
                 <div className="col-span-2 text-center">Quantity</div>
-                <div className="col-span-1 text-center">Total</div>
+                <div className="col-span-2 text-center">Total</div>
               </div>
 
               {cart.map((item) => (
-                <div
-                  key={`${item.id}-${item.selectedSize}-${item.selectedColor}`}
-                  className="grid grid-cols-12 p-4 border-b items-center"
-                >
-                  <div className="col-span-5 flex items-center gap-4">
+                <div key={item.uniqueKey} className="p-4 border-b last:border-b-0">
+                  {/* === Mobile View === */}
+                  <div className="sm:hidden flex flex-col items-center text-center">
                     <img
-                      src={item.img}
+                      // ✅ UPDATED: Use the selectedImage property from the cart item
+                      src={`${import.meta.env.BASE_URL}${item.selectedImage}`}
                       alt={item.name}
-                      className="w-16 h-16 object-cover rounded"
+                      className="w-24 h-24 object-cover rounded mb-2"
                     />
-                    <div>
-                      <h3 className="font-medium">{item.name}</h3>
-                      <p className="text-sm text-gray-600">{item.category}</p>
+                    <h3 className="font-bold text-lg">{item.name}</h3>
+                    <p className="text-sm text-gray-600 mb-1">{item.category}</p>
+                    
+                    {/* Options & Price */}
+                    <div className="flex justify-center gap-4 text-sm mb-2">
+                        <span className="font-medium">Size: {item.selectedSize}</span>
+                        <span className="font-medium">
+                          Color: 
+                          <span 
+                            className="inline-block w-3 h-3 rounded-full ml-1 align-middle"
+                            style={{ backgroundColor: item.colors?.find(c => c.name === item.selectedColor)?.value || '#ccc' }}
+                          ></span>
+                        </span>
                     </div>
-                  </div>
 
-                  <div className="col-span-2 text-center">Ksh {item.price.toLocaleString()}</div>
-
-                  {/* Options (Size and Color) */}
-                  <div className="col-span-2 text-center">
-                    <div className="text-sm mb-1">
-                      <span className="font-medium">Size: </span>
-                      {item.selectedSize}
-                    </div>
-                    <div className="text-sm">
-                      <span className="font-medium">Color: </span>
-                      <span 
-                        className="inline-block w-3 h-3 rounded-full mr-1 align-middle"
-                        style={{ backgroundColor: item.colors?.find(c => c.name === item.selectedColor)?.value || '#ccc' }}
-                      ></span>
-                      {item.selectedColor}
-                    </div>
-                  </div>
-
-                  <div className="col-span-2 flex justify-center">
-                    <div className="flex items-center border rounded-lg overflow-hidden">
+                    {/* Quantity and Remove */}
+                    <div className="flex items-center gap-4 mb-2">
+                      <div className="flex items-center border rounded-lg overflow-hidden">
+                        <button
+                          onClick={() => updateQty(item.uniqueKey, item.qty - 1)}
+                          className="px-3 py-1 bg-gray-200 hover:bg-gray-300 transition"
+                          disabled={item.qty <= 1}
+                        >
+                          -
+                        </button>
+                        <span className="px-4">{item.qty}</span>
+                        <button
+                          onClick={() => updateQty(item.uniqueKey, item.qty + 1)}
+                          className="px-3 py-1 bg-gray-200 hover:bg-gray-300 transition"
+                        >
+                          +
+                        </button>
+                      </div>
                       <button
-                        onClick={() => updateQty(item.id, item.selectedSize, item.selectedColor, item.qty - 1)}
-                        className="px-3 py-1 bg-gray-200 hover:bg-gray-300 transition"
-                        disabled={item.qty <= 1}
+                        onClick={() => removeFromCart(item.uniqueKey)}
+                        className="text-red-500 hover:text-red-700 transition"
                       >
-                        -
-                      </button>
-                      <span className="px-4">{item.qty}</span>
-                      <button
-                        onClick={() => updateQty(item.id, item.selectedSize, item.selectedColor, item.qty + 1)}
-                        className="px-3 py-1 bg-gray-200 hover:bg-gray-300 transition"
-                      >
-                        +
+                        <FiTrash2 size={20} />
                       </button>
                     </div>
+
+                    <p className="text-xl font-bold">Total: Ksh {(item.price * item.qty).toLocaleString()}</p>
                   </div>
 
-                  <div className="col-span-1 text-center">
-                    Ksh {(item.price * item.qty).toLocaleString()}
-                  </div>
+                  {/* === Desktop View === */}
+                  <div className="hidden sm:grid grid-cols-12 items-center gap-4">
+                    {/* Product */}
+                    <div className="col-span-4 flex items-center gap-4">
+                      <img
+                        // ✅ UPDATED: Use the selectedImage property here too
+                        src={`${import.meta.env.BASE_URL}${item.selectedImage}`}
+                        alt={item.name}
+                        className="w-16 h-16 object-cover rounded"
+                      />
+                      <div>
+                        <h3 className="font-medium">{item.name}</h3>
+                        <p className="text-sm text-gray-600">{item.category}</p>
+                      </div>
+                    </div>
 
-                  <div className="col-span-1 text-center">
-                    <button
-                      onClick={() => removeFromCart(item.id, item.selectedSize, item.selectedColor)}
-                      className="text-red-500 hover:text-red-700 transition"
-                    >
-                      <FiTrash2 size={18} />
-                    </button>
+                    {/* Price */}
+                    <div className="col-span-2 text-center">Ksh {item.price.toLocaleString()}</div>
+
+                    {/* Options */}
+                    <div className="col-span-2 text-center">
+                      <div className="text-sm mb-1">
+                        <span className="font-medium">Size: </span>
+                        {item.selectedSize}
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium">Color: </span>
+                        <span 
+                          className="inline-block w-3 h-3 rounded-full mr-1 align-middle"
+                          style={{ backgroundColor: item.colors?.find(c => c.name === item.selectedColor)?.value || '#ccc' }}
+                        ></span>
+                        {item.selectedColor}
+                      </div>
+                    </div>
+
+                    {/* Quantity */}
+                    <div className="col-span-2 flex justify-center">
+                      <div className="flex items-center border rounded-lg overflow-hidden">
+                        <button
+                          onClick={() => updateQty(item.uniqueKey, item.qty - 1)}
+                          className="px-3 py-1 bg-gray-200 hover:bg-gray-300 transition"
+                          disabled={item.qty <= 1}
+                        >
+                          -
+                        </button>
+                        <span className="px-4">{item.qty}</span>
+                        <button
+                          onClick={() => updateQty(item.uniqueKey, item.qty + 1)}
+                          className="px-3 py-1 bg-gray-200 hover:bg-gray-300 transition"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Total & Remove */}
+                    <div className="col-span-2 flex items-center justify-between px-2">
+                      <span className="text-sm">Ksh {(item.price * item.qty).toLocaleString()}</span>
+                      <button
+                        onClick={() => removeFromCart(item.uniqueKey)}
+                        className="text-red-500 hover:text-red-700 transition"
+                      >
+                        <FiTrash2 size={18} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
