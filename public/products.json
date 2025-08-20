@@ -1,0 +1,220 @@
+[
+  {
+    "id": 1,
+    "img": "/src/assets/products/f1.jpg",
+    "brand": "adidas",
+    "name": "Cartoon Astronaut T-Shirts",
+    "price": 1780,
+    "category": "clothing",
+    "description": "Comfortable cotton t-shirt with a fun astronaut print. Perfect for casual wear.",
+    "details": [
+      "100% premium cotton",
+      "Machine washable",
+      "Regular fit",
+      "Double-stitched seams"
+    ],
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "colors": [
+      { "name": "Black", "value": "#000000" },
+      { "name": "White", "value": "#ffffff" },
+      { "name": "Navy Blue", "value": "#000080" }
+    ],
+    "images": [
+      "/src/assets/products/f1.jpg",
+      "/src/assets/products/f2.jpg",
+      "/src/assets/products/f3.jpg"
+    ],
+    "rating": 4.5,
+    "reviews": 42,
+    "inStock": true
+  },
+  {
+    "id": 2,
+    "img": "/src/assets/products/f2.jpg",
+    "brand": "adidas",
+    "name": "Cartoon Astronaut T-Shirts",
+    "price": 1820,
+    "category": "clothing",
+    "description": "High-quality t-shirt with vibrant astronaut design. Made from sustainable materials.",
+    "details": [
+      "Organic cotton blend",
+      "Eco-friendly printing",
+      "Modern fit",
+      "Colorfast"
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      { "name": "Red", "value": "#ff0000" },
+      { "name": "Gray", "value": "#808080" }
+    ],
+    "images": [
+      "/src/assets/products/f2.jpg",
+      "/src/assets/products/f1.jpg"
+    ],
+    "rating": 4.2,
+    "reviews": 28,
+    "inStock": true
+  },
+  {
+    "id": 3,
+    "img": "/src/assets/products/f3.jpg",
+    "brand": "nike",
+    "name": "Casual Summer Outfit",
+    "price": 1650,
+    "category": "clothing",
+    "description": "Lightweight and breathable summer outfit perfect for warm weather.",
+    "details": [
+      "Polyester-cotton blend",
+      "Quick-dry technology",
+      "Relaxed fit",
+      "UPF 50+ protection"
+    ],
+    "sizes": ["XS", "S", "M", "L"],
+    "colors": [
+      { "name": "Sky Blue", "value": "#87ceeb" },
+      { "name": "Light Gray", "value": "#d3d3d3" }
+    ],
+    "images": [
+      "/src/assets/products/f3.jpg",
+      "/src/assets/products/f4.jpg"
+    ],
+    "rating": 4.7,
+    "reviews": 56,
+    "inStock": true
+  },
+  {
+    "id": 4,
+    "img": "/src/assets/products/f4.jpg",
+    "brand": "puma",
+    "name": "Stylish Hoodie",
+    "price": 2200,
+    "category": "clothing",
+    "description": "Warm and stylish hoodie with a unique design. Ideal for casual outings.",
+    "details": [
+      "Fleece-lined interior",
+      "Adjustable drawstring hood",
+      "Kangaroo pocket",
+      "Ribbed cuffs and hem"
+    ],
+    "sizes": ["M", "L", "XL"],
+    "colors": [
+      { "name": "Charcoal", "value": "#333333" },
+      { "name": "Olive Green", "value": "#808000" }
+    ],
+    "images": [
+      "/src/assets/products/f4.jpg",
+      "/src/assets/products/f5.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 34,
+    "inStock": true
+  },
+  {
+    "id": 5,
+    "img": "/src/assets/products/f5.jpg",
+    "brand": "adidas",
+    "name": "Trendy Joggers",
+    "price": 1999,
+    "category": "clothing",
+    "description": "Comfortable joggers with a trendy design. Perfect for workouts or casual wear.",
+    "details": [
+      "Elastic waistband with drawstring",
+      "Side pockets",
+      "Tapered fit",
+      "Breathable fabric"
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      { "name": "Black", "value": "#000000" },
+      { "name": "Navy Blue", "value": "#000080" }
+    ],
+    "images": [
+      "/src/assets/products/f5.jpg",
+      "/src/assets/products/f6.jpg"
+    ],
+    "rating": 4.6,
+    "reviews": 45,
+    "inStock": true
+  },
+  {
+    "id": 6,
+    "img": "/src/assets/products/f6.jpg",
+    "brand": "nike",
+    "name": "Classic Sneakers",
+    "price": 3500,
+    "category": "footwear",
+    "description": "Stylish sneakers with a classic design. Comfortable for all-day wear.",
+    "details": [
+      "Leather upper",
+      "Cushioned insole",
+      "Rubber outsole",
+      "Lace-up closure"
+    ],
+    "sizes": ["7", "8", "9", "10"],
+    "colors": [
+      { "name": "White", "value": "#ffffff" },
+      { "name": "Black", "value": "#000000" }
+    ],
+    "images": [
+      "/src/assets/products/f6.jpg",
+      "/src/assets/products/f7.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 60,
+    "inStock": true
+  },
+  {
+    "id": 7,
+    "img": "/src/assets/products/f7.jpg",
+    "brand": "puma",
+    "name": "Running Shoes",
+    "price": 4000,
+    "category": "footwear",
+    "description": "High-performance running shoes designed for comfort and speed.",
+    "details": [
+      "Mesh upper for breathability",
+      "Cushioned midsole",
+      "Lightweight design",
+      "Reflective details"
+    ],
+    "sizes": ["8", "9", "10", "11"],
+    "colors": [
+      { "name": "Blue", "value": "#0000ff" },
+      { "name": "Gray", "value": "#808080" }
+    ],
+    "images": [
+      "/src/assets/products/f7.jpg",
+      "/src/assets/products/f8.jpg"
+    ],
+    "rating": 4.5,
+    "reviews": 50,
+    "inStock": true
+  },
+  {
+    "id": 8,
+    "img": "/src/assets/products/f8.jpg",
+    "brand": "adidas",
+    "name": "Casual Slip-Ons",
+    "price": 2800,
+    "category": "footwear",
+    "description": "Easy-to-wear slip-on shoes with a casual design. Perfect for everyday use.",
+    "details": [
+      "Canvas upper",
+      "Elastic side panels",
+      "Cushioned footbed",
+      "Durable outsole"
+    ],
+    "sizes": ["7", "8", "9", "10"],
+    "colors": [
+      { "name": "Beige", "value": "#f5f5dc" },
+      { "name": "Black", "value": "#000000" }
+    ],
+    "images": [
+      "/src/assets/products/f8.jpg",
+      "/src/assets/products/f9.jpg"
+    ],
+    "rating": 4.3,
+    "reviews": 30,
+    "inStock": true
+  }
+]
