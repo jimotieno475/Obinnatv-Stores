@@ -26,7 +26,7 @@ function App() {
   const [cartItems, setCartItems] = useState(0);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Obinnatv-Stores">
     <FavoritesProvider>
     <Notification />
       <div className="App">
