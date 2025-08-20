@@ -55,7 +55,7 @@ const Navbar = () => {
               </span>
             )}
           </Link>
-
+          <FavoritesIconWithBadge />
           {/* Menu Button (hamburger / close) */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}

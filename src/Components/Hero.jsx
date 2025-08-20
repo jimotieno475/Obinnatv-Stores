@@ -17,11 +17,11 @@ const Hero = () => {
     <section className="relative">
       {/* Hero Section */}
       <section
-        className=" relative bg-white/70 backdrop-blur-md shadow-md  top-0 z-50"
+        className=" relative bg-white/70 backdrop-blur-md shadow-md  top-0 z-relative"
         style={{ backgroundImage: `url(${OTS})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
       <div 
-        className="relative bg-[url('/assets/hero4.png')] bg-cover bg-right h-screen flex items-center"
+        className="relative bg-[`url(${OTS})`] bg-cover bg-right h-screen flex items-center"
         style={{ backgroundPosition: 'top 25% right 0' }}
       >
         {/* Overlay */}
