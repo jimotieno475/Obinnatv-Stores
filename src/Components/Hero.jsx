@@ -49,7 +49,7 @@ const Hero = () => {
           {/* Quick Highlights */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
             {[
-              { icon: "🚚", text: "Free Shipping within Nairobi" },
+              { icon: "🚚", text: "Secure Shipping Country wide" },
               { icon: "💳", text: "Secure Payments" },
               { icon: "⏰", text: "24/7 Support" },
               { icon: "💵", text: "Money-Back Guarantee" }
