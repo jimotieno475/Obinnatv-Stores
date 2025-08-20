@@ -170,7 +170,7 @@ const ProductDetail = () => {
         <div>
           <div className="mb-4 rounded-lg overflow-hidden">
             <img
-              src={product.images[activeImage]}
+              src={`${import.meta.env.BASE_URL}${product.images[activeImage]}`}
               alt={product.name}
               className="w-full h-auto object-cover"
             />
@@ -183,7 +183,7 @@ const ProductDetail = () => {
                 className={`border rounded-lg overflow-hidden ${activeImage === index ? 'border-[#FE7F02]' : 'border-gray-200'}`}
               >
                 <img
-                  src={img}
+                  src={`${import.meta.env.BASE_URL}${img}`}
                   alt={`${product.name} view ${index + 1}`}
                   className="w-full h-20 object-cover"
                 />

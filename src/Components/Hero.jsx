@@ -83,7 +83,7 @@ const Hero = () => {
             >
                <Link to={`/product/${product.id}`}>
               <img 
-                src={product.img} 
+                src={`${import.meta.env.BASE_URL}${product.img}`} 
                 alt={product.name} 
                 className="w-full h-48 object-cover rounded"
               />
