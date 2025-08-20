@@ -9,7 +9,7 @@ const Products = () => {
 
   // Fetch products.json
   useEffect(() => {
-    fetch("/products.json")
+    fetch(`${import.meta.env.BASE_URL}products.json`)
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error("Error loading products:", err));

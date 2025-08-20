@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "img": "/src/assets/products/f1.jpg",
+    "img": "products/f1.jpg",
     "brand": "adidas",
     "name": "Cartoon Astronaut T-Shirts",
     "price": 1780,
@@ -20,9 +20,9 @@
       { "name": "Navy Blue", "value": "#000080" }
     ],
     "images": [
-      "/src/assets/products/f1.jpg",
-      "/src/assets/products/f2.jpg",
-      "/src/assets/products/f3.jpg"
+      "products/f1.jpg",
+      "products/f2.jpg",
+      "products/f3.jpg"
     ],
     "rating": 4.5,
     "reviews": 42,
@@ -30,7 +30,7 @@
   },
   {
     "id": 2,
-    "img": "/src/assets/products/f2.jpg",
+    "img": "products/f2.jpg",
     "brand": "adidas",
     "name": "Cartoon Astronaut T-Shirts",
     "price": 1820,
@@ -48,8 +48,8 @@
       { "name": "Gray", "value": "#808080" }
     ],
     "images": [
-      "/src/assets/products/f2.jpg",
-      "/src/assets/products/f1.jpg"
+      "products/f2.jpg",
+      "products/f1.jpg"
     ],
     "rating": 4.2,
     "reviews": 28,
@@ -57,7 +57,7 @@
   },
   {
     "id": 3,
-    "img": "/src/assets/products/f3.jpg",
+    "img": "products/f3.jpg",
     "brand": "nike",
     "name": "Casual Summer Outfit",
     "price": 1650,
@@ -75,8 +75,8 @@
       { "name": "Light Gray", "value": "#d3d3d3" }
     ],
     "images": [
-      "/src/assets/products/f3.jpg",
-      "/src/assets/products/f4.jpg"
+      "products/f3.jpg",
+      "products/f4.jpg"
     ],
     "rating": 4.7,
     "reviews": 56,
@@ -84,7 +84,7 @@
   },
   {
     "id": 4,
-    "img": "/src/assets/products/f4.jpg",
+    "img": "products/f4.jpg",
     "brand": "puma",
     "name": "Stylish Hoodie",
     "price": 2200,
@@ -102,8 +102,8 @@
       { "name": "Olive Green", "value": "#808000" }
     ],
     "images": [
-      "/src/assets/products/f4.jpg",
-      "/src/assets/products/f5.jpg"
+      "products/f4.jpg",
+      "products/f5.jpg"
     ],
     "rating": 4.8,
     "reviews": 34,
@@ -111,7 +111,7 @@
   },
   {
     "id": 5,
-    "img": "/src/assets/products/f5.jpg",
+    "img": "products/f5.jpg",
     "brand": "adidas",
     "name": "Trendy Joggers",
     "price": 1999,
@@ -129,8 +129,8 @@
       { "name": "Navy Blue", "value": "#000080" }
     ],
     "images": [
-      "/src/assets/products/f5.jpg",
-      "/src/assets/products/f6.jpg"
+      "products/f5.jpg",
+      "products/f6.jpg"
     ],
     "rating": 4.6,
     "reviews": 45,
@@ -138,7 +138,7 @@
   },
   {
     "id": 6,
-    "img": "/src/assets/products/f6.jpg",
+    "img": "products/f6.jpg",
     "brand": "nike",
     "name": "Classic Sneakers",
     "price": 3500,
@@ -156,8 +156,8 @@
       { "name": "Black", "value": "#000000" }
     ],
     "images": [
-      "/src/assets/products/f6.jpg",
-      "/src/assets/products/f7.jpg"
+      "products/f6.jpg",
+      "products/f7.jpg"
     ],
     "rating": 4.9,
     "reviews": 60,
@@ -165,7 +165,7 @@
   },
   {
     "id": 7,
-    "img": "/src/assets/products/f7.jpg",
+    "img": "products/f7.jpg",
     "brand": "puma",
     "name": "Running Shoes",
     "price": 4000,
@@ -183,8 +183,8 @@
       { "name": "Gray", "value": "#808080" }
     ],
     "images": [
-      "/src/assets/products/f7.jpg",
-      "/src/assets/products/f8.jpg"
+      "products/f7.jpg",
+      "products/f8.jpg"
     ],
     "rating": 4.5,
     "reviews": 50,
@@ -192,7 +192,7 @@
   },
   {
     "id": 8,
-    "img": "/src/assets/products/f8.jpg",
+    "img": "products/f8.jpg",
     "brand": "adidas",
     "name": "Casual Slip-Ons",
     "price": 2800,
@@ -210,8 +210,8 @@
       { "name": "Black", "value": "#000000" }
     ],
     "images": [
-      "/src/assets/products/f8.jpg",
-      "/src/assets/products/f9.jpg"
+      "products/f8.jpg",
+      "products/f9.jpg"
     ],
     "rating": 4.3,
     "reviews": 30,

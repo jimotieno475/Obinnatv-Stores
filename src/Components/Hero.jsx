@@ -7,7 +7,7 @@ const Hero = () => {
 
 
   useEffect(() => {
-    fetch("/products.json") // ✅ products.json must be inside public folder
+    fetch(`${import.meta.env.BASE_URL}products.json`) // ✅ products.json must be inside public folder
       .then((res) => res.json())
       .then((data) => setProducts(data.slice(0, 4))) // ✅ only first 4
       .catch((err) => console.error("Error fetching products:", err));

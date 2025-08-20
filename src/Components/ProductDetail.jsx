@@ -21,7 +21,7 @@ const ProductDetail = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    fetch("/products.json")
+    fetch(`${import.meta.env.BASE_URL}products.json`)
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
