@@ -20,7 +20,7 @@ const FavoritesPage = () => {
           <FiHeart size={48} className="mx-auto text-gray-300 mb-4" />
           <p className="text-lg text-gray-600">Your favorites list is empty</p>
           <Link
-            to="/shop"
+            to="/products"
             className="mt-4 inline-block bg-[#FE7F02] text-black px-6 py-2 rounded-lg hover:bg-black hover:text-[#FE7F02] transition"
           >
             Browse Products
